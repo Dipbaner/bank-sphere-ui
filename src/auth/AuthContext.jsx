@@ -12,11 +12,14 @@ const userFromToken = (token) => {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)        // { email, role } once fully logged in
   const [preAuth, setPreAuth] = useState(null)  // { token, enrollmentRequired, expiresAt }
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(
+    () => window.location.pathname !== '/' && !window.location.pathname.startsWith('/preview')
+  )
 
   // On page load the memory token is gone: try to restore the session from the cookie.
   useEffect(() => {
     setSessionLostHandler(() => setUser(null))
+    if (window.location.pathname === '/' || window.location.pathname.startsWith('/preview')) return
     refreshSession()
       .then((d) => setUser(userFromToken(d.accessToken)))
       .catch(() => setUser(null))

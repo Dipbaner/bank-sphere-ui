@@ -1,17 +1,19 @@
-# React + Vite
+# BankSphere UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BankSphere UI is a React frontend for the BankSphere banking application. It includes authentication flows and role-protected portals for customer, employee, and admin users.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Requirements: Node.js and npm.
 
-## React Compiler
+```sh
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The Vite development server runs on port `5173`. The root page opens the frontend preview and does not require a backend. Authentication pages and protected app routes remain available separately. The development server proxies `/api` requests to `http://localhost:8080`; Google sign-in uses the `VITE_API_ORIGIN` environment variable.
 
-## Expanding the ESLint configuration
+Available scripts:
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
